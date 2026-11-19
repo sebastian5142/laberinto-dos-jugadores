@@ -6,7 +6,7 @@
 using namespace std;
 
 bool hayGanador(Resultado r) {
-    return r.resultado == "JUGADOR 1" || r.resultado == "JUGADOR 2";
+    return r.resultado != "SIN GANADOR";
 }
 
 bool debeIrDespues(Resultado a, Resultado b) {
