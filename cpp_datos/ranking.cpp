@@ -25,7 +25,6 @@ bool debeIrDespues(Resultado a, Resultado b) {
     return a.id > b.id;
 }
 
-// Ordenamiento burbuja sobre la lista enlazada (intercambia los datos)
 void ordenarLista(Nodo* cabeza) {
     bool huboCambio = true;
 
