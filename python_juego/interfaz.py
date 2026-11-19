@@ -69,7 +69,7 @@ def dibujar_juego(posicion_j1, posicion_j2, restante, mensaje):
     texto = fuente.render("Tiempo: " + str(segundos) + " s", True, NEGRO)
     ventana.blit(texto, (12, barra_y + 8))
 
-    ayuda = fuente_pequena.render("Azul: flechas | Rojo: W A S D", True, NEGRO)
+    ayuda = fuente_pequena.render("Azul: W A S D | Rojo: flechas", True, NEGRO)
     ventana.blit(ayuda, (220, barra_y + 12))
 
     if mensaje != "":
@@ -134,13 +134,16 @@ def mostrar_ranking(ranking):
                 elif partida["resultado"] == "JUGADOR 2":
                     nombre = "Jugador 2"
                     color = ROJO
+                elif partida["resultado"] == "EMPATE":
+                    nombre = "Empate"
+                    color = VERDE
                 else:
                     nombre = "Sin ganador"
                     color = GRIS_TEXTO
                 imagen = fuente_fila.render(nombre, True, color)
                 ventana.blit(imagen, (230, y))
 
-                if partida["resultado"] == "JUGADOR 1" or partida["resultado"] == "JUGADOR 2":
+                if partida["resultado"] != "SIN GANADOR":
                     tiempo = str(round(partida["tiempo"], 2)) + " s"
                 else:
                     tiempo = "-"

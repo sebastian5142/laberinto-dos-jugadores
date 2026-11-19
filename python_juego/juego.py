@@ -4,7 +4,7 @@ from logica import (INICIO_J1, INICIO_J2, mover_jugador,
                     comprobar_resultado, guardar_resultado, obtener_ranking)
 import interfaz
 
-DURACION_PARTIDA = 120   
+DURACION_PARTIDA = 180   
 PAUSA_FINAL = 2          
 NOMBRE_J1 = "Jugador 1"
 NOMBRE_J2 = "Jugador 2"
@@ -35,22 +35,24 @@ def jugar():
                 cerro_ventana = True
 
             if evento.type == pygame.KEYDOWN and resultado is None:
-                if evento.key == pygame.K_UP:
+                # Jugador 1: W A S D
+                if evento.key == pygame.K_w:
                     posicion_j1 = mover_jugador(posicion_j1, (-1, 0), posicion_j2)
-                if evento.key == pygame.K_DOWN:
+                if evento.key == pygame.K_s:
                     posicion_j1 = mover_jugador(posicion_j1, (1, 0), posicion_j2)
-                if evento.key == pygame.K_LEFT:
+                if evento.key == pygame.K_a:
                     posicion_j1 = mover_jugador(posicion_j1, (0, -1), posicion_j2)
-                if evento.key == pygame.K_RIGHT:
+                if evento.key == pygame.K_d:
                     posicion_j1 = mover_jugador(posicion_j1, (0, 1), posicion_j2)
 
-                if evento.key == pygame.K_w:
+                # Jugador 2: flechas
+                if evento.key == pygame.K_UP:
                     posicion_j2 = mover_jugador(posicion_j2, (-1, 0), posicion_j1)
-                if evento.key == pygame.K_s:
+                if evento.key == pygame.K_DOWN:
                     posicion_j2 = mover_jugador(posicion_j2, (1, 0), posicion_j1)
-                if evento.key == pygame.K_a:
+                if evento.key == pygame.K_LEFT:
                     posicion_j2 = mover_jugador(posicion_j2, (0, -1), posicion_j1)
-                if evento.key == pygame.K_d:
+                if evento.key == pygame.K_RIGHT:
                     posicion_j2 = mover_jugador(posicion_j2, (0, 1), posicion_j1)
 
 
@@ -60,7 +62,7 @@ def jugar():
             if resultado is not None:
                 tiempo_final = transcurrido
             elif restante <= 0:
-                resultado = "EMPATE"
+                resultado = "SIN GANADOR"
                 tiempo_final = DURACION_PARTIDA
 
             if resultado is not None:
@@ -70,6 +72,8 @@ def jugar():
 
         if resultado is None:
             mensaje = ""
+        elif resultado == "SIN GANADOR":
+            mensaje = "TIEMPO AGOTADO: PIERDEN AMBOS"
         else:
             mensaje = resultado
 

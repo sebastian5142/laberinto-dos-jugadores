@@ -70,9 +70,13 @@ def mover_jugador(posicion, movimiento, otra_posicion):
     nueva_columna = posicion[1] + movimiento[1]
     nueva_posicion = (nueva_fila, nueva_columna)
 
-    if es_transitable(nueva_fila, nueva_columna) and nueva_posicion != otra_posicion:
-        return nueva_posicion
-    return posicion
+    if not es_transitable(nueva_fila, nueva_columna):
+            return posicion
+
+    if nueva_posicion == otra_posicion and nueva_posicion != META:
+        return posicion
+
+    return nueva_posicion
 
 
 def comprobar_resultado(posicion_j1, posicion_j2):
