@@ -16,7 +16,7 @@ bool separarLinea(string linea, string campos[6]) {
         char c = linea[i];
         if (c == ',') {
             if (numero >= 5) {
-                return false;      // demasiadas comas
+                return false;      
             }
             campos[numero] = actual;
             numero++;
@@ -39,7 +39,7 @@ Nodo* cargarHistorial(string nombreArchivo) {
     }
 
     string linea;
-    getline(archivo, linea);   // se salta el encabezado
+    getline(archivo, linea);   
 
     Nodo* cabeza = NULL;
     Nodo* cola = NULL;
@@ -48,7 +48,7 @@ Nodo* cargarHistorial(string nombreArchivo) {
     while (getline(archivo, linea)) {
         string campos[6];
         if (!separarLinea(linea, campos)) {
-            continue;          // línea dañada, se ignora
+            continue;          
         }
 
         Nodo* nuevo = new Nodo;
