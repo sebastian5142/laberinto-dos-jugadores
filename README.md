@@ -1,55 +1,59 @@
-# Laberinto para dos jugadores
+Declaración de Autoría y Licenciamiento
 
-## Descripción
-Juego local para dos personas en el mismo computador. Cada jugador recorre un laberinto de 39x39, evita las paredes y trata de llegar a la meta antes que el otro. La partida tiene un límite de 120 segundos. Al terminar, el programa en C++ calcula el ranking y se muestra en una ventana.
+El proyecto Laberinto para dos jugadores fue desarrollado por los integrantes del equipo como parte de un proyecto integrador. Cada integrante participó en actividades de programación, diseño, integración y documentación.
 
-## Requisitos
-- Python 3
-- Pygame (`python -m pip install pygame`)
-- Compilador de C++ (g++) compatible con C++11 o superior
+Licencia
 
-## Estructura
-```
-ProyectoJuego/
-├── python_juego/
-│   ├── juego.py        (programa principal, controles y cronómetro)
-│   ├── interfaz.py     (ventanas y eventos con Pygame)
-│   ├── logica.py       (mapa, movimientos, resultado y guardado del CSV)
-│   └── historial.csv   (partidas guardadas)
-├── cpp_datos/
-│   ├── main.cpp        (lee el CSV y arma la lista enlazada)
-│   ├── ranking.cpp     (ordena la lista y genera el ranking)
-│   └── nodo.h          (estructuras Resultado y Nodo)
-├── LICENSE
-└── README.md
-```
+Este proyecto utiliza la licencia MIT. Esta licencia permite utilizar, copiar, modificar y distribuir el código, siempre que se mantengan los avisos de derechos de autor y las condiciones establecidas en la licencia.
 
-## Ejecución
-1. Abrir una terminal dentro de la carpeta `cpp_datos` y compilar (solo una vez, o cada vez que se cambie el código C++):
-   - Windows: `g++ -std=c++11 main.cpp ranking.cpp -o ranking.exe`
-   - Linux/macOS: `g++ -std=c++11 main.cpp ranking.cpp -o ranking`
-2. Abrir una terminal dentro de la carpeta `python_juego` y ejecutar: `python juego.py`
-3. Controles: el Jugador 1 (azul) usa las flechas; el Jugador 2 (rojo) usa W, A, S y D.
-4. Cuando un jugador llega a la meta (o se acaba el tiempo), la partida se guarda en `historial.csv` y aparece el ranking. Se cierra con ENTER o ESC.
+El texto completo se encuentra en el archivo `LICENSE` del repositorio.
 
-## Cómo se comunican Python y C++
-Python guarda cada partida en `historial.csv`. Al terminar, Python ejecuta el programa de C++, que lee ese archivo, arma una lista enlazada, la ordena y escribe el resultado. Python lee esa respuesta y la dibuja en la ventana.
+Créditos de herramientas utilizadas
 
-## Formato del CSV
-`fecha,jugador1,jugador2,resultado,tiempo_segundos,limite_segundos`
+Python: lenguaje utilizado para desarrollar la lógica del juego.
+Pygame: biblioteca utilizada para crear la interfaz gráfica, dibujar el laberinto y controlar los movimientos de los jugadores. https://www.pygame.org/
+C++: lenguaje utilizado para procesar los resultados y generar el ranking.
+Inteligencia Artificial:se utilizó Claude como herramienta de apoyo para consultar dudas, revisar código y mejorar algunas partes del proyecto. El equipo revisó y probó las soluciones utilizadas.
 
-El resultado es `JUGADOR 1`, `JUGADOR 2` o `EMPATE`. Cada fila es una partida y su número de partida es el orden en que aparece en el archivo.
+Recursos visuales
 
-## Criterios del ranking
-Primero van las partidas con ganador, ordenadas de menor a mayor tiempo de llegada. Al final quedan las partidas sin ganador (empate por tiempo). Para cada partida se muestra el número de partida, el ganador, el tiempo de llegada y la fecha.
+Los recursos visuales utilizados en el juego fueron elaborados por el equipo. Si se incorporan imágenes u otros elementos externos, se reconocerá a sus respectivos autores y fuentes.
 
-## Dependencias y créditos
-- Python: lenguaje del juego.
-- Pygame: biblioteca externa para ventana, eventos y gráficos. Sitio: https://www.pygame.org/
-- C++ estándar: lectura de archivos, lista enlazada y ordenamiento.
-- Herramientas de IA: se usó Claude (Anthropic) como apoyo para escribir y corregir el código base. El equipo lo revisó, lo probó y es responsable de su contenido. (Ajustar este texto según el trabajo real del equipo y las reglas de la institución.)
 
-## Integrantes y responsabilidades
-- Sebastián: lógica e interfaz gráfica (`logica.py`, `interfaz.py`, `juego.py`) e integración de módulos.
-- Cristian: `ranking.cpp`, README, licencia y documentación de conflictos.
-- Mateo: `main.cpp`, `nodo.h`, `historial.csv` y lista enlazada.
+Bitácora de Gestión de Conflictos
+
+ Conflicto: Integración de Python y C++
+
+1. Hechos:
+
+Durante el desarrollo del proyecto surgieron dificultades al integrar los módulos de Python y C++. Python se encargaba de guardar los resultados de las partidas en un archivo CSV, mientras que C++ debía leer esa información para generar el ranking. Fue necesario coordinar el formato y el orden de los datos.
+
+2. Sentimientos:
+
+Esta situación generó preocupación y cierta frustración en el equipo, debido a que dificultaba las pruebas del funcionamiento completo del juego.
+
+3. Necesidades:
+
+El equipo necesitaba establecer un formato de información común, mejorar la comunicación entre los integrantes y realizar pruebas para comprobar que ambos módulos funcionaran correctamente.
+
+4. Petición: 
+
+Se propuso revisar conjuntamente la estructura del archivo CSV, mantener los mismos nombres y el orden de los campos en ambos programas y realizar pruebas de integración.
+
+Solución del conflicto
+
+El equipo acordó utilizar un archivo CSV como medio de comunicación entre los dos módulos. Python guarda los resultados de las partidas y C++ utiliza esa información para procesar los datos y generar el ranking.
+
+Reflexión del equipo
+
+Esta experiencia nos permitió comprender que la comunicación y la organización son importantes durante el desarrollo de un proyecto. También aprendimos que es necesario establecer acuerdos para evitar errores y conseguir que las diferentes partes del programa funcionen correctamente.
+
+
+
+Fuentes de información y referencias bibliográficas
+
+Las siguientes fuentes académicas fueron consultadas como apoyo para comprender la importancia de la comunicación, el trabajo en equipo y la gestión de conflictos.
+
+1. León del Barco, B., Felipe Castaño, E., Iglesias Gallego, D., & Marugán de Miguelsanz, M. (2014). Determinantes en la eficacia del aprendizaje cooperativo. Una experiencia en el EEES. *Revista de Investigación Educativa, 32*(2), 411-424. https://doi.org/10.6018/rie.32.2.172721
+
+2. Montalvo García, A., Ávila Vila, S., & Longo, F. (2024). Modelo de trabajo colaborativo online desde la perspectiva socioemocional. *RIED-Revista Iberoamericana de Educación a Distancia, 27*(2). https://doi.org/10.5944/ried.27.2.39115
